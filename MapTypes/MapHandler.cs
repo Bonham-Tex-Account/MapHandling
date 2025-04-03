@@ -99,7 +99,7 @@ namespace MapHandling.MapTypes
             get => map[x, y];
             set => map[x, y] = value;
         }
-        //Map Manipulation Methods
+        //Manipulation Methods
         public void ChangeRange(ITerrain terrain, int xMin, int xMax, int yMin, int yMax)
         {
             if (xMin < 0 || yMin < 0 || xMax > Size || yMax > Size)
