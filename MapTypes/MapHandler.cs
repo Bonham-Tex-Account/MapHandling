@@ -128,6 +128,54 @@ namespace MapHandling.MapTypes
                 map[i, column].SetTerrain(terrain);
             }
         }
+        //Object Override Methods
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            MapHandler compHandler = (MapHandler)obj;
+            if(this.Size!=compHandler.Size)
+            {
+                return false;
+            }
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    if (!compHandler[i, j].Equals(map[i,j]))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public override int GetHashCode()
+        {
+            int code = 0;
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    code += map[i, j].GetHashCode()*Size;
+                }
+            }
+            return code;
+        }
+        public override string ToString()
+        {
+            char[] output = new char[Size * Size];
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    output[i * Size + j] = map[i, j].Terrain.CharRep;
+                }
+            }
+            return new String(output);
+        }
 
     }
 }

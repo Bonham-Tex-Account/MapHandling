@@ -8,6 +8,6 @@ namespace MapHandling.TerrainData
 {
     public class AirportTerrain : IProductionTerrain
     {
-        public char CharRep => 'A';
+        public char CharRep => 'A';       
     }
 }

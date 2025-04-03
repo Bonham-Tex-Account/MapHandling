@@ -50,7 +50,11 @@ namespace MapHandling.MapTypes
         //Object Override Methods
         public override bool Equals(object? obj)
         {
-            if (obj == null || obj.GetType() != Terrain.GetType())
+            if (obj == null || obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            else if (obj.GetHashCode()!=this.GetHashCode())
             {
                 return false;
             }
@@ -59,6 +63,10 @@ namespace MapHandling.MapTypes
         public override int GetHashCode()
         {
             return Terrain.CharRep.GetHashCode();
+        }
+        public override string ToString()
+        {
+            return Terrain.CharRep.ToString();
         }
 
 
